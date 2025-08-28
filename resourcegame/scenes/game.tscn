@@ -1,14 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs2q5xkhilp3j"]
+[gd_scene load_steps=5 format=3 uid="uid://cs2q5xkhilp3j"]
 
 [ext_resource type="PackedScene" uid="uid://d1lmw3ugkdl30" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://buchyl7yj5mnf" path="res://scenes/test_stage.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://fbocwujp04na" path="res://scenes/stick.tscn" id="3_lbhrr"]
+[ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scenes/game_manager.gd" id="4_iywne"]
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(206, 66)
+script = ExtResource("4_iywne")
+
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(525, 281)
+position = Vector2(336, 566)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(240, -243)
+position_smoothing_enabled = true
+
+[node name="StickLabel" type="Label" parent="Player/Camera2D"]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -421.0
+offset_bottom = -265.0
+text = "Sticks: 0"
 
 [node name="TestStage" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(576, 628)
 
 [node name="TestStage2" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(419, 393)
@@ -17,3 +36,21 @@ scale = Vector2(0.1, 0.1)
 [node name="TestStage3" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(637, 453)
 scale = Vector2(0.1, 0.1)
+
+[node name="TestStage4" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(719.69, 155.1)
+rotation = -0.598648
+scale = Vector2(0.3, 0.1)
+
+[node name="TestStage5" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1005.2, 58.1)
+scale = Vector2(0.25, 0.1)
+
+[node name="stick" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(1009, 591)
+
+[node name="stick2" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(379, 374)
+
+[node name="stick3" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(1112, 31)
