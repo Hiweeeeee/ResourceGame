@@ -18,10 +18,12 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		#Track time since last on floor
 		if time_since_on_floor >= COYOTE_TIME:
 			was_on_floor = false
 		else:
 			time_since_on_floor += delta
+	#Reset time since last on floor
 	elif is_on_floor():
 		was_on_floor = true
 		time_since_on_floor = 0.0
@@ -62,3 +64,12 @@ shape = SubResource("CapsuleShape2D_sh265")
 position = Vector2(0, 1.19209e-07)
 scale = Vector2(0.0374527, 0.0374527)
 texture = ExtResource("1_3vyb7")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="StickLabel" type="Label" parent="CharacterBody2D/Camera2D"]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -421.0
+offset_bottom = -265.0
+text = "Sticks: 0"

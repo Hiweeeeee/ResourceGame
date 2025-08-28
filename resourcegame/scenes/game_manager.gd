@@ -2,7 +2,8 @@ extends Node2D
 
 var sticks = 0
 
-@onready var stick_label = $"../Player/Camera2D/StickLabel"
+@onready var stick_label = $"../Player/CharacterBody2D/Camera2D/StickLabel"
+#@onready var stick_label = $"../Player/Camera2D/StickLabel"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

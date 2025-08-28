@@ -15,17 +15,6 @@ script = ExtResource("4_iywne")
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(336, 566)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(240, -243)
-position_smoothing_enabled = true
-
-[node name="StickLabel" type="Label" parent="Player/Camera2D"]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -421.0
-offset_bottom = -265.0
-text = "Sticks: 0"
-
 [node name="TestStage" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(576, 628)
 
