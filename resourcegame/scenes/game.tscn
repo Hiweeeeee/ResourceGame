@@ -1,7 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs2q5xkhilp3j"]
+[gd_scene load_steps=3 format=3 uid="uid://cs2q5xkhilp3j"]
 
 [ext_resource type="PackedScene" uid="uid://d1lmw3ugkdl30" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://buchyl7yj5mnf" path="res://scenes/test_stage.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(525, 281)
+
+[node name="TestStage" parent="." instance=ExtResource("2_yqjtg")]
+
+[node name="TestStage2" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(419, 393)
+scale = Vector2(0.1, 0.1)
+
+[node name="TestStage3" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(637, 453)
+scale = Vector2(0.1, 0.1)
