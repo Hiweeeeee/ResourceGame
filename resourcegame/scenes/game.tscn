@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs2q5xkhilp3j"]
+[gd_scene load_steps=6 format=3 uid="uid://cs2q5xkhilp3j"]
 
 [ext_resource type="PackedScene" uid="uid://d1lmw3ugkdl30" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://buchyl7yj5mnf" path="res://scenes/test_stage.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://fbocwujp04na" path="res://scenes/stick.tscn" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scenes/game_manager.gd" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://cynivb4sc68up" path="res://scenes/hud.tscn" id="5_iywne"]
 
 [node name="Game" type="Node2D"]
 
@@ -43,3 +44,19 @@ position = Vector2(379, 374)
 
 [node name="stick3" parent="." instance=ExtResource("3_lbhrr")]
 position = Vector2(1112, 31)
+
+[node name="HUD" parent="." instance=ExtResource("5_iywne")]
+offset = Vector2(500, 700)
+transform = Transform2D(1, 0, 0, 1, 500, 700)
+
+[node name="StickLabel" type="Label" parent="HUD"]
+anchors_preset = -1
+anchor_left = -0.142
+anchor_top = -0.205
+anchor_right = -0.142
+anchor_bottom = -0.205
+offset_left = -332.416
+offset_top = -562.16
+offset_right = -177.416
+offset_bottom = -503.16
+text = "Sticks: 0"
