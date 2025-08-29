@@ -55,4 +55,3 @@ func _physics_process(delta):
 func _on_eternal_torch():
 	torch_light.energy = 2.5
 	torch_light.texture_scale *= 3
-	print("yes yes yes?")

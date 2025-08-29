@@ -15,6 +15,7 @@
 
 [node name="background" type="Sprite2D" parent="."]
 z_index = -5
+texture_filter = 1
 position = Vector2(-1109, -186)
 scale = Vector2(5.28556, 5.3925)
 texture = ExtResource("1_u5sy4")
