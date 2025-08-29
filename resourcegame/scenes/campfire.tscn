@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://ddafftncvtags"]
+
+[ext_resource type="Texture2D" uid="uid://bd0lq3ghwmxw7" path="res://sprites/campfires.jpg" id="1_54scn"]
+[ext_resource type="Script" uid="uid://7pw2dqumrcf3" path="res://animated_sprite_2d.gd" id="2_yfrnb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pk5p"]
+atlas = ExtResource("1_54scn")
+region = Rect2(119, 75, 200, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6xh0"]
+atlas = ExtResource("1_54scn")
+region = Rect2(400, 75, 200, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v5ef"]
+atlas = ExtResource("1_54scn")
+region = Rect2(678, 75, 200, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63vhv"]
+atlas = ExtResource("1_54scn")
+region = Rect2(119, 353, 200, 210)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2pjx"]
+atlas = ExtResource("1_54scn")
+region = Rect2(399, 354, 200, 210)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te7ig"]
+atlas = ExtResource("1_54scn")
+region = Rect2(678, 282, 200, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f1eb"]
+atlas = ExtResource("1_54scn")
+region = Rect2(120, 640, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbayf"]
+atlas = ExtResource("1_54scn")
+region = Rect2(399, 640, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73d8c"]
+atlas = ExtResource("1_54scn")
+region = Rect2(678, 635, 200, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdo0i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pk5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6xh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v5ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63vhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2pjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te7ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f1eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbayf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73d8c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Campfire" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_54scn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(478, 427)
+sprite_frames = SubResource("SpriteFrames_tdo0i")
+frame = 8
+frame_progress = 1.0
+centered = false
+offset = Vector2(-99, -280)
+script = ExtResource("2_yfrnb")

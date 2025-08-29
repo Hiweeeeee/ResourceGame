@@ -36,11 +36,36 @@ scale = Vector2(0.3, 0.1)
 position = Vector2(1005.2, 58.1)
 scale = Vector2(0.25, 0.1)
 
+[node name="TestStage6" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(214, 729)
+rotation = -0.00729023
+scale = Vector2(0.391714, 0.170908)
+skew = 0.869401
+
+[node name="TestStage7" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-139, 835)
+rotation = -0.679728
+scale = Vector2(0.292425, 0.0722181)
+skew = -0.550359
+
+[node name="TestStage8" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1153, -209.6)
+rotation = -0.462512
+scale = Vector2(0.5, 0.2)
+skew = -0.892688
+
+[node name="TestStage9" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1694.95, -337)
+scale = Vector2(0.5, 0.1)
+
 [node name="stick" parent="." instance=ExtResource("3_lbhrr")]
 position = Vector2(1009, 591)
 
 [node name="stick2" parent="." instance=ExtResource("3_lbhrr")]
 position = Vector2(379, 374)
+
+[node name="stick4" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(410, 703)
 
 [node name="stick3" parent="." instance=ExtResource("3_lbhrr")]
 position = Vector2(1112, 31)
