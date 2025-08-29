@@ -79,7 +79,7 @@ texture = SubResource("CompressedTexture2D_54scn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(47, 100)
 sprite_frames = SubResource("SpriteFrames_tdo0i")
-frame_progress = 0.727468
+frame_progress = 0.160307
 offset = Vector2(-47, -100)
 
 [node name="Area2D" type="Area2D" parent="."]

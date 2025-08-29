@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs2q5xkhilp3j"]
+[gd_scene load_steps=10 format=3 uid="uid://cs2q5xkhilp3j"]
 
 [ext_resource type="Texture2D" uid="uid://c5u21oad2oqs0" path="res://sprites/backgrounds/mountain background.jpg" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://d1lmw3ugkdl30" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scripts/game_manager.gd" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://ddafftncvtags" path="res://scenes/campfire.tscn" id="4_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cynivb4sc68up" path="res://scenes/hud.tscn" id="5_iywne"]
+[ext_resource type="Script" uid="uid://xbs5cqa4ibw7" path="res://scripts/killbox.gd" id="8_gee14"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
 
 [node name="Game" type="Node2D"]
 
@@ -19,6 +22,7 @@ texture = ExtResource("1_u5sy4")
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1942, -370)
 scale = Vector2(0.5, 0.5)
+editor_only = true
 max_distance = 10.0
 
 [node name="GameManager" type="Node2D" parent="."]
@@ -108,3 +112,12 @@ offset_top = -562.16
 offset_right = -177.416
 offset_bottom = -503.16
 text = "Sticks: 0"
+
+[node name="killbox" type="Area2D" parent="."]
+script = ExtResource("8_gee14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killbox"]
+position = Vector2(-7, 3024)
+shape = SubResource("WorldBoundaryShape2D_u5sy4")
+
+[connection signal="body_entered" from="killbox" to="killbox" method="_on_body_entered"]
