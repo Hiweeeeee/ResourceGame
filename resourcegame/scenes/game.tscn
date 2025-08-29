@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scripts/game_manager.gd" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://ddafftncvtags" path="res://scenes/campfire.tscn" id="4_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cynivb4sc68up" path="res://scenes/hud.tscn" id="5_iywne"]
-[ext_resource type="Script" path="res://scripts/killbox.gd" id="8_gee14"]
+[ext_resource type="Script" uid="uid://xbs5cqa4ibw7" path="res://scripts/killbox.gd" id="8_gee14"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
 
@@ -31,7 +31,7 @@ position = Vector2(206, 66)
 script = ExtResource("4_iywne")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(1866, -400)
+position = Vector2(1693, -425)
 
 [node name="TestStage" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(576, 628)
@@ -79,6 +79,18 @@ scale = Vector2(0.5, 0.1)
 [node name="Campfire" parent="." instance=ExtResource("4_p57ef")]
 position = Vector2(1430, -375)
 scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="Campfire"]
+offset_left = -336.0
+offset_top = -332.0
+offset_right = 356.0
+offset_bottom = -144.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
+text = "You have revived the eternal flame! Do you wish to take it with you (press F on fire)"
+horizontal_alignment = 1
+vertical_alignment = 3
+autowrap_mode = 3
 
 [node name="stick" parent="." instance=ExtResource("3_lbhrr")]
 position = Vector2(1009, 591)

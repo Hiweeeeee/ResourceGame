@@ -1,0 +1,256 @@
+[gd_scene load_steps=19 format=3 uid="uid://cs2q5xkhilp3j"]
+
+[ext_resource type="Texture2D" uid="uid://c5u21oad2oqs0" path="res://sprites/backgrounds/mountain background.jpg" id="1_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://buchyl7yj5mnf" path="res://scenes/test_stage.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://bu1l2xvcvn1tq" path="res://sprites/Stick_JE1_BE1.png" id="3_dinhu"]
+[ext_resource type="PackedScene" uid="uid://fbocwujp04na" path="res://scenes/stick.tscn" id="3_lbhrr"]
+[ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scripts/game_manager.gd" id="4_iywne"]
+[ext_resource type="Texture2D" uid="uid://cqckglq2vsbja" path="res://sprites/player/393-Piplup.webp" id="4_kvuet"]
+[ext_resource type="PackedScene" uid="uid://ddafftncvtags" path="res://scenes/campfire.tscn" id="4_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cynivb4sc68up" path="res://scenes/hud.tscn" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://cwccrxm5foigq" path="res://sprites/player/393-Piplup_normal.png" id="5_trtic"]
+[ext_resource type="Texture2D" uid="uid://bgn5shvdu8sov" path="res://sprites/player/specular_piplup.png" id="6_ir15t"]
+[ext_resource type="Script" uid="uid://xbs5cqa4ibw7" path="res://scripts/killbox.gd" id="8_gee14"]
+
+[sub_resource type="GDScript" id="GDScript_ca42v"]
+script/source = "extends CharacterBody2D
+
+@onready var sprite_2d = $Sprite2D
+@onready var torch = $Torch
+@onready var torch_light = $Torch/TorchLight
+@onready var campfire = $\".\"
+
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -600.0
+const COYOTE_TIME = 0.1
+var was_on_floor = false
+var time_since_on_floor = 0.0
+
+func _ready():
+	if campfire:
+		campfire.connect(\"eternal_torch\", _on_eternal_torch)
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		#Track time since last on floor
+		if time_since_on_floor >= COYOTE_TIME:
+			was_on_floor = false
+		else:
+			time_since_on_floor += delta
+	#Reset time since last on floor
+	elif is_on_floor():
+		was_on_floor = true
+		time_since_on_floor = 0.0
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and (is_on_floor() or was_on_floor):
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction = Input.get_axis(\"left\", \"right\")
+	
+	# turn the sprite
+	if direction > 0:
+		sprite_2d.flip_h = false
+		torch.flip_h = false
+		torch.position = Vector2(12, -1)
+	elif direction < 0:
+		sprite_2d.flip_h = true
+		torch.flip_h = true
+		torch.position = Vector2(-12, -1)
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = 0
+
+	move_and_slide()
+
+
+func _on_eternal_torch():
+	torch_light.energy = 2.5
+	torch_light.texture_scale *= 3
+"
+
+[sub_resource type="Gradient" id="Gradient_qlg0r"]
+offsets = PackedFloat32Array(0, 0.716312)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rysoc"]
+gradient = SubResource("Gradient_qlg0r")
+fill = 1
+fill_from = Vector2(0.502439, 0.497561)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssvqc"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_264po"]
+polygon = PackedVector2Array(58.7, -400, -48.3, -400, -84.9, -392, -88.9, -392, -119.8, -379, -123, -379, -160, -357, -162.3, -357, -181.2, -340, -183.4, -340, -213.4, -307, -214.6, -307, -234.6, -277, -235.8, -277, -247.8, -250, -249, -250, -260, -212, -261.1, -212, -264.5, -195.2, -264.5, -105.1, -259.5, -86, -259.5, -81.6, -252.5, -65.7, -252.5, -62.4, -228.5, -24.4, -228.5, -22.2, -202.5, 3.79999, -202.5, 5, -173.5, 26, -173.5, 27.2, -150.7, 38.6, -167.2, 51, -169.3, 51, -196.2, 77.9, -212, 70, -219.1, 70, -222.1, 72, -224.5, 72, -231.5, 82, -233.8, 82, -231.8, 96.3, -247.2, 92, -248.9, 92, -256.9, 95, -259.4, 95, -264.4, 101, -264.5, 126.4, -238.5, 163, -237.7, 163, -231, 176.4, -241, 212, -242.2, 212, -248.3, 254, -249.5, 254, -249.5, 289.2, -246.5, 304.4, -246.5, 309.4, -239.5, 326.3, -239.5, 329.8, -232.5, 336.8, -232.5, 338.2, -229, 340, -219.9, 340, -210, 334, -207.7, 334, -192.6, 320, -190.6, 320, -164.7, 291, -147.5, 324.5, -147.5, 325.1, -159.5, 340, -160.7, 340, -174.5, 365.5, -174.5, 372.6, -171.5, 377.5, -171.5, 379.9, -161.5, 388.8, -161.5, 390.3, -141, 400, -94.6, 400, -83, 393, -80.6, 393, -70.6, 382, -68.9, 382, -67, 374, -64.8, 374, -69.5, 358, -69.5, 354.4, -74.8, 346.9, -56.5, 351.5, -56.5, 352.8, -26.5, 356.7, -26.5, 358, 24.5, 359, 25.6, 359, 54.8, 355, 56.4, 355, 95.5, 364.5, 95.5, 365.8, 133.5, 370.7, 133.5, 372, 172.9, 372, 191.8, 364, 194.5, 364, 199.5, 357, 201.9, 357, 200.5, 348.7, 200.5, 345.3, 195.5, 339.3, 195.5, 337.1, 175.5, 319.1, 175.5, 317.8, 158.2, 309.1, 170.4, 296, 171.6, 296, 181.6, 280, 182.9, 280, 193.2, 252.7, 205.5, 271.6, 205.5, 274.1, 211.5, 278.1, 211.5, 280.8, 219.8, 278, 222.6, 278, 233.5, 262, 235, 262, 243.5, 229.3, 243.5, 197.8, 233.5, 146.6, 233.5, 142.6, 209.8, 85, 209.5, 71.7, 204.5, 56.7, 204.5, 53.4, 191.5, 35.3, 191.5, 33, 178, 22.4, 198.2, 6, 200.4, 6, 219.3, -14, 220.6, -14, 233.6, -33, 234.8, -33, 255.8, -79, 257.1, -79, 264.5, -115.6, 264.5, -203.1, 250.5, -250.3, 250.5, -253.5, 240.5, -273.5, 240.5, -275.6, 228.5, -292.7, 228.5, -294.8, 186.5, -340.8, 186.5, -342.1, 148.5, -368.1, 148.5, -369.3, 117.5, -383.3, 117.5, -384.5, 84.5, -394.5, 84.5, -395.7)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1kice"]
+diffuse_texture = ExtResource("4_kvuet")
+normal_texture = ExtResource("5_trtic")
+specular_texture = ExtResource("6_ir15t")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
+
+[node name="Game" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(-1109, -186)
+scale = Vector2(5.28556, 5.3925)
+texture = ExtResource("1_u5sy4")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(1942, -370)
+scale = Vector2(0.5, 0.5)
+editor_only = true
+max_distance = 10.0
+
+[node name="GameManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(206, 66)
+script = ExtResource("4_iywne")
+
+[node name="Playerbody" type="CharacterBody2D" parent="."]
+position = Vector2(1866, -400)
+script = SubResource("GDScript_ca42v")
+
+[node name="Torch" type="Sprite2D" parent="Playerbody"]
+position = Vector2(12, -1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_dinhu")
+
+[node name="TorchLight" type="PointLight2D" parent="Playerbody/Torch"]
+position = Vector2(68, -58)
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_rysoc")
+texture_scale = 33.69
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Playerbody"]
+shape = SubResource("CapsuleShape2D_ssvqc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Playerbody"]
+position = Vector2(0, -1)
+scale = Vector2(0.0374527, 0.0374527)
+texture = ExtResource("4_kvuet")
+
+[node name="Camera2D" type="Camera2D" parent="Playerbody"]
+position_smoothing_enabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Playerbody"]
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.0374527, 0.0374527)
+occluder = SubResource("OccluderPolygon2D_264po")
+
+[node name="shadows (incomplete)" type="Sprite2D" parent="Playerbody"]
+visible = false
+position = Vector2(215, -26)
+scale = Vector2(0.037, 0.037)
+texture = SubResource("CanvasTexture_1kice")
+
+[node name="TestStage" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(576, 628)
+
+[node name="TestStage2" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(419, 393)
+scale = Vector2(0.1, 0.1)
+
+[node name="TestStage3" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(637, 453)
+scale = Vector2(0.1, 0.1)
+
+[node name="TestStage4" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(719.69, 155.1)
+rotation = -0.598648
+scale = Vector2(0.3, 0.1)
+
+[node name="TestStage5" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1005.2, 58.1)
+scale = Vector2(0.25, 0.1)
+
+[node name="TestStage10" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1324, 676)
+scale = Vector2(0.25, 0.04)
+
+[node name="TestStage6" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(214, 729)
+rotation = -0.00729023
+scale = Vector2(0.391714, 0.170908)
+
+[node name="TestStage7" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-154.3, 816.65)
+rotation = -0.549779
+scale = Vector2(0.292425, 0.0722181)
+
+[node name="TestStage8" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1236.6, -186.8)
+rotation = -0.719076
+scale = Vector2(0.4, 0.16)
+
+[node name="TestStage9" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1695.7, -338.77)
+scale = Vector2(0.5, 0.1)
+
+[node name="Campfire" parent="." instance=ExtResource("4_p57ef")]
+unique_name_in_owner = true
+position = Vector2(1430, -375)
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="Campfire"]
+offset_left = -336.0
+offset_top = -332.0
+offset_right = 356.0
+offset_bottom = -144.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
+text = "You have revived the eternal flame! Do you wish to take it with you (press F on fire)"
+horizontal_alignment = 1
+vertical_alignment = 3
+autowrap_mode = 3
+
+[node name="stick" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(1009, 591)
+
+[node name="stick2" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(379, 374)
+
+[node name="stick4" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(410, 703)
+
+[node name="stick3" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(1112, 31)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(1937, -362)
+scale = Vector2(0.5, 0.5)
+color = Color(0.00566115, 0.00566115, 0.00566115, 1)
+
+[node name="HUD" parent="." instance=ExtResource("5_iywne")]
+offset = Vector2(500, 700)
+transform = Transform2D(1, 0, 0, 1, 500, 700)
+
+[node name="StickLabel" type="Label" parent="HUD"]
+anchors_preset = -1
+anchor_left = -0.142
+anchor_top = -0.205
+anchor_right = -0.142
+anchor_bottom = -0.205
+offset_left = -332.416
+offset_top = -562.16
+offset_right = -177.416
+offset_bottom = -503.16
+text = "Sticks: 0"
+
+[node name="killbox" type="Area2D" parent="."]
+script = ExtResource("8_gee14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killbox"]
+position = Vector2(-7, 3024)
+shape = SubResource("WorldBoundaryShape2D_u5sy4")
+
+[connection signal="body_entered" from="killbox" to="killbox" method="_on_body_entered"]

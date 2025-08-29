@@ -1,68 +1,17 @@
 [gd_scene load_steps=11 format=3 uid="uid://d1lmw3ugkdl30"]
 
 [ext_resource type="Texture2D" uid="uid://cqckglq2vsbja" path="res://sprites/player/393-Piplup.webp" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bj2wpbd2a01xe" path="res://scripts/player.tres.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cwccrxm5foigq" path="res://sprites/player/393-Piplup_normal.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bgn5shvdu8sov" path="res://sprites/player/specular_piplup.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bu1l2xvcvn1tq" path="res://sprites/Stick_JE1_BE1.png" id="4_dqkch"]
 
-[sub_resource type="GDScript" id="GDScript_3vyb7"]
-script/source = "extends CharacterBody2D
-
-@onready var sprite_2d = $Sprite2D
-@onready var torch = $torch
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
-const COYOTE_TIME = 0.1
-var was_on_floor = false
-var time_since_on_floor = 0.0
-
-
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		#Track time since last on floor
-		if time_since_on_floor >= COYOTE_TIME:
-			was_on_floor = false
-		else:
-			time_since_on_floor += delta
-	#Reset time since last on floor
-	elif is_on_floor():
-		was_on_floor = true
-		time_since_on_floor = 0.0
-
-	# Handle jump.
-	if Input.is_action_just_pressed(\"ui_accept\") and (is_on_floor() or was_on_floor):
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis(\"left\", \"right\")
-	
-	# turn the sprite
-	if direction > 0:
-		sprite_2d.flip_h = false
-		torch.flip_h = false
-		torch.position = Vector2(12, -1)
-	elif direction < 0:
-		sprite_2d.flip_h = true
-		torch.flip_h = true
-		torch.position = Vector2(-12, -1)
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = 0
-
-	move_and_slide()
-"
-
-[sub_resource type="Gradient" id="Gradient_qlg0r"]
+[sub_resource type="Gradient" id="Gradient_dqkch"]
 offsets = PackedFloat32Array(0, 0.716312)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tuyoq"]
-gradient = SubResource("Gradient_qlg0r")
+gradient = SubResource("Gradient_dqkch")
 fill = 1
 fill_from = Vector2(0.502439, 0.497561)
 fill_to = Vector2(1, 1)
@@ -79,38 +28,37 @@ specular_texture = ExtResource("3_dqkch")
 
 [node name="Player" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = SubResource("GDScript_3vyb7")
+[node name="Playerbody" type="CharacterBody2D" parent="."]
+script = ExtResource("1_qlg0r")
 
-[node name="torch" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Torch" type="Sprite2D" parent="Playerbody"]
 position = Vector2(12, -1)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_dqkch")
 
-[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/torch"]
+[node name="TorchLight" type="PointLight2D" parent="Playerbody/Torch"]
 position = Vector2(68, -58)
-shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_tuyoq")
 texture_scale = 33.69
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Playerbody"]
 shape = SubResource("CapsuleShape2D_sh265")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Playerbody"]
 position = Vector2(0, -1)
 scale = Vector2(0.0374527, 0.0374527)
 texture = ExtResource("1_3vyb7")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Playerbody"]
 position_smoothing_enabled = true
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Playerbody"]
 position = Vector2(0, 1.19209e-07)
 scale = Vector2(0.0374527, 0.0374527)
 occluder = SubResource("OccluderPolygon2D_3vyb7")
 
-[node name="shadows (incomplete)" type="Sprite2D" parent="."]
+[node name="shadows (incomplete)" type="Sprite2D" parent="Playerbody"]
 visible = false
 position = Vector2(215, -26)
 scale = Vector2(0.037, 0.037)
