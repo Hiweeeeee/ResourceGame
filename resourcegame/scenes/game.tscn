@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cs2q5xkhilp3j"]
+[gd_scene load_steps=8 format=3 uid="uid://cs2q5xkhilp3j"]
 
+[ext_resource type="Texture2D" uid="uid://c5u21oad2oqs0" path="res://sprites/backgrounds/mountain background.jpg" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://d1lmw3ugkdl30" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://buchyl7yj5mnf" path="res://scenes/test_stage.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://fbocwujp04na" path="res://scenes/stick.tscn" id="3_lbhrr"]
@@ -9,13 +10,26 @@
 
 [node name="Game" type="Node2D"]
 
+[node name="background" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(-1109, -186)
+scale = Vector2(5.28556, 5.3925)
+texture = ExtResource("1_u5sy4")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
+position = Vector2(1942, -370)
+scale = Vector2(0.5, 0.5)
+energy = 0.31
+max_distance = 10.0
+
 [node name="GameManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(206, 66)
 script = ExtResource("4_iywne")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(336, 566)
+position = Vector2(1866, -400)
 
 [node name="TestStage" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(576, 628)
@@ -47,21 +61,21 @@ rotation = -0.00729023
 scale = Vector2(0.391714, 0.170908)
 
 [node name="TestStage7" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-127, 850)
-rotation = -0.806342
+position = Vector2(-154.3, 816.65)
+rotation = -0.549779
 scale = Vector2(0.292425, 0.0722181)
 
 [node name="TestStage8" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(1152, -209)
-rotation = -0.462512
-scale = Vector2(0.5, 0.2)
+position = Vector2(1236.6, -186.8)
+rotation = -0.719076
+scale = Vector2(0.4, 0.16)
 
 [node name="TestStage9" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(1695.7, -338.77)
 scale = Vector2(0.5, 0.1)
 
 [node name="Campfire" parent="." instance=ExtResource("4_p57ef")]
-position = Vector2(1942, -370)
+position = Vector2(1430, -375)
 scale = Vector2(0.5, 0.5)
 
 [node name="stick" parent="." instance=ExtResource("3_lbhrr")]
@@ -75,6 +89,11 @@ position = Vector2(410, 703)
 
 [node name="stick3" parent="." instance=ExtResource("3_lbhrr")]
 position = Vector2(1112, 31)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(1937, -362)
+scale = Vector2(0.5, 0.5)
+color = Color(0.00566115, 0.00566115, 0.00566115, 1)
 
 [node name="HUD" parent="." instance=ExtResource("5_iywne")]
 offset = Vector2(500, 700)

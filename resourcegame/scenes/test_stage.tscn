@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://buchyl7yj5mnf"]
+[gd_scene load_steps=5 format=3 uid="uid://buchyl7yj5mnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ueehy"]
 size = Vector2(1151, 35)
@@ -7,6 +7,9 @@ size = Vector2(1151, 35)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jog5b"]
 gradient = SubResource("Gradient_ueehy")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ueehy"]
+polygon = PackedVector2Array(-31.9999, -13.1765, -31.9999, 13.1765, 31.9999, 13.1765, 31.9999, -13.1765)
 
 [node name="TestStage" type="Node2D"]
 
@@ -19,3 +22,8 @@ shape = SubResource("RectangleShape2D_ueehy")
 position = Vector2(9.53674e-07, 0)
 scale = Vector2(17.9688, 0.53125)
 texture = SubResource("GradientTexture2D_jog5b")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(1.13687e-13, 0)
+scale = Vector2(17.9688, 0.53125)
+occluder = SubResource("OccluderPolygon2D_ueehy")

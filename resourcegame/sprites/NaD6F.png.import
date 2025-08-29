@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqckglq2vsbja"
-path="res://.godot/imported/393-Piplup.webp-7a2d11f4a790ee1361326bb3bd593963.ctex"
+uid="uid://du0njt66xbr1v"
+path="res://.godot/imported/NaD6F.png-7a4f29bb05f83b7ebb7624691d69b82d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/393-Piplup.webp"
-dest_files=["res://.godot/imported/393-Piplup.webp-7a2d11f4a790ee1361326bb3bd593963.ctex"]
+source_file="res://sprites/NaD6F.png"
+dest_files=["res://.godot/imported/NaD6F.png-7a4f29bb05f83b7ebb7624691d69b82d.ctex"]
 
 [params]
 
