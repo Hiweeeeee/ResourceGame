@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scripts/game_manager.gd" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://ddafftncvtags" path="res://scenes/campfire.tscn" id="4_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cynivb4sc68up" path="res://scenes/hud.tscn" id="5_iywne"]
-[ext_resource type="Script" uid="uid://xbs5cqa4ibw7" path="res://scripts/killbox.gd" id="8_gee14"]
+[ext_resource type="Script" path="res://scripts/killbox.gd" id="8_gee14"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
 

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c5v17y1iuqpqb" path="res://sprites/campfire.jpg" id="3_yfrnb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_54scn"]
-load_path = "res://.godot/imported/campfire.webp-ad053bdbf96270136db179334d4a4e51.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pk5p"]
 atlas = ExtResource("3_yfrnb")

@@ -89,6 +89,8 @@ texture = ExtResource("4_dqkch")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/torch"]
 position = Vector2(68, -58)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_tuyoq")
 texture_scale = 33.69
 
