@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs2q5xkhilp3j"]
+[gd_scene load_steps=7 format=3 uid="uid://cs2q5xkhilp3j"]
 
 [ext_resource type="PackedScene" uid="uid://d1lmw3ugkdl30" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://buchyl7yj5mnf" path="res://scenes/test_stage.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://fbocwujp04na" path="res://scenes/stick.tscn" id="3_lbhrr"]
-[ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scenes/game_manager.gd" id="4_iywne"]
+[ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scripts/game_manager.gd" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://ddafftncvtags" path="res://scenes/campfire.tscn" id="4_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cynivb4sc68up" path="res://scenes/hud.tscn" id="5_iywne"]
 
 [node name="Game" type="Node2D"]
@@ -36,27 +37,32 @@ scale = Vector2(0.3, 0.1)
 position = Vector2(1005.2, 58.1)
 scale = Vector2(0.25, 0.1)
 
+[node name="TestStage10" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1324, 676)
+scale = Vector2(0.25, 0.04)
+
 [node name="TestStage6" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(214, 729)
 rotation = -0.00729023
 scale = Vector2(0.391714, 0.170908)
-skew = 0.869401
 
 [node name="TestStage7" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-139, 835)
-rotation = -0.679728
+position = Vector2(-127, 850)
+rotation = -0.806342
 scale = Vector2(0.292425, 0.0722181)
-skew = -0.550359
 
 [node name="TestStage8" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(1153, -209.6)
+position = Vector2(1152, -209)
 rotation = -0.462512
 scale = Vector2(0.5, 0.2)
-skew = -0.892688
 
 [node name="TestStage9" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(1694.95, -337)
+position = Vector2(1695.7, -338.77)
 scale = Vector2(0.5, 0.1)
+
+[node name="Campfire" parent="." instance=ExtResource("4_p57ef")]
+position = Vector2(1942, -370)
+scale = Vector2(0.5, 0.5)
 
 [node name="stick" parent="." instance=ExtResource("3_lbhrr")]
 position = Vector2(1009, 591)

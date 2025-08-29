@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://fbocwujp04na"]
 
 [ext_resource type="Texture2D" uid="uid://bu1l2xvcvn1tq" path="res://sprites/Stick_JE1_BE1.png" id="1_i3vek"]
-[ext_resource type="Script" uid="uid://bw0asp3n5mwin" path="res://scenes/stick.gd" id="1_ld7er"]
+[ext_resource type="Script" uid="uid://bw0asp3n5mwin" path="res://scripts/stick.gd" id="1_ld7er"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3vek"]
 size = Vector2(30, 31.5)

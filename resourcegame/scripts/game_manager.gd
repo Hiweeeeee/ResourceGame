@@ -1,7 +1,8 @@
 extends Node2D
 
-var sticks = 0
-
+var sticks = 0:
+	set(value):
+		sticks = clamp(value, 0, 100)
 
 #@onready var stick_label = $"../Player/Camera2D/StickLabel"
 @onready var stick_label = $"../HUD/StickLabel"
@@ -17,4 +18,8 @@ func _process(delta):
 
 func pick_up_stick():
 	sticks += 1
+	stick_label.text = "Sticks: " + str(sticks)
+
+func put_down_stick():
+	sticks -= 1
 	stick_label.text = "Sticks: " + str(sticks)

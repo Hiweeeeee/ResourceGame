@@ -1,43 +1,32 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddafftncvtags"]
+[gd_scene load_steps=12 format=3 uid="uid://ddafftncvtags"]
 
-[ext_resource type="Texture2D" uid="uid://bd0lq3ghwmxw7" path="res://sprites/campfires.jpg" id="1_54scn"]
-[ext_resource type="Script" uid="uid://7pw2dqumrcf3" path="res://animated_sprite_2d.gd" id="2_yfrnb"]
+[ext_resource type="Script" uid="uid://cp6pm7e0ybdm4" path="res://scripts/campfire.gd" id="1_yfrnb"]
+[ext_resource type="Texture2D" uid="uid://kfhtj7oyjwbt" path="res://sprites/campfire.webp" id="2_54scn"]
+[ext_resource type="Texture2D" uid="uid://c5v17y1iuqpqb" path="res://sprites/campfire.jpg" id="3_yfrnb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pk5p"]
-atlas = ExtResource("1_54scn")
-region = Rect2(119, 75, 200, 192)
+atlas = ExtResource("3_yfrnb")
+region = Rect2(108, 0, 96, 137)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m6xh0"]
-atlas = ExtResource("1_54scn")
-region = Rect2(400, 75, 200, 192)
+atlas = ExtResource("3_yfrnb")
+region = Rect2(12, 0, 96, 137)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1v5ef"]
-atlas = ExtResource("1_54scn")
-region = Rect2(678, 75, 200, 192)
+atlas = ExtResource("3_yfrnb")
+region = Rect2(204, 0, 96, 137)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_63vhv"]
-atlas = ExtResource("1_54scn")
-region = Rect2(119, 353, 200, 210)
+atlas = ExtResource("3_yfrnb")
+region = Rect2(300, 0, 96, 137)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2pjx"]
-atlas = ExtResource("1_54scn")
-region = Rect2(399, 354, 200, 210)
+atlas = ExtResource("3_yfrnb")
+region = Rect2(396, 0, 96, 137)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_te7ig"]
-atlas = ExtResource("1_54scn")
-region = Rect2(678, 282, 200, 280)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0f1eb"]
-atlas = ExtResource("1_54scn")
-region = Rect2(120, 640, 200, 277)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sbayf"]
-atlas = ExtResource("1_54scn")
-region = Rect2(399, 640, 200, 277)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_73d8c"]
-atlas = ExtResource("1_54scn")
-region = Rect2(678, 635, 200, 280)
+atlas = ExtResource("3_yfrnb")
+region = Rect2(492, 0, 96, 137)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tdo0i"]
 animations = [{
@@ -59,32 +48,32 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_te7ig")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0f1eb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sbayf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_73d8c")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pk5p"]
+size = Vector2(94, 136)
+
 [node name="Campfire" type="Node2D"]
+script = ExtResource("1_yfrnb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_54scn")
+texture = ExtResource("2_54scn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(478, 427)
+position = Vector2(47, 100)
 sprite_frames = SubResource("SpriteFrames_tdo0i")
-frame = 8
-frame_progress = 1.0
-centered = false
-offset = Vector2(-99, -280)
-script = ExtResource("2_yfrnb")
+frame_progress = 0.592438
+offset = Vector2(-47, -100)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8pk5p")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
