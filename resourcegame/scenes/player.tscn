@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1lmw3ugkdl30"]
+[gd_scene load_steps=15 format=3 uid="uid://d1lmw3ugkdl30"]
 
 [ext_resource type="Texture2D" uid="uid://cqckglq2vsbja" path="res://sprites/player/393-Piplup.webp" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bj2wpbd2a01xe" path="res://scripts/player.tres.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cwccrxm5foigq" path="res://sprites/player/393-Piplup_normal.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bgn5shvdu8sov" path="res://sprites/player/specular_piplup.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bu1l2xvcvn1tq" path="res://sprites/Stick_JE1_BE1.png" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://ebx8f8ww12jy" path="res://sprites/light/flashlight cone.png" id="6_fjrip"]
+[ext_resource type="Texture2D" uid="uid://c5u21oad2oqs0" path="res://sprites/backgrounds/mountain background.jpg" id="7_smehm"]
 
 [sub_resource type="Gradient" id="Gradient_dqkch"]
 offsets = PackedFloat32Array(0, 0.716312)
@@ -17,6 +19,7 @@ fill_from = Vector2(0.502439, 0.497561)
 fill_to = Vector2(1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
+height = 28.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3vyb7"]
 polygon = PackedVector2Array(58.7, -400, -48.3, -400, -84.9, -392, -88.9, -392, -119.8, -379, -123, -379, -160, -357, -162.3, -357, -181.2, -340, -183.4, -340, -213.4, -307, -214.6, -307, -234.6, -277, -235.8, -277, -247.8, -250, -249, -250, -260, -212, -261.1, -212, -264.5, -195.2, -264.5, -105.1, -259.5, -86, -259.5, -81.6, -252.5, -65.7, -252.5, -62.4, -228.5, -24.4, -228.5, -22.2, -202.5, 3.79999, -202.5, 5, -173.5, 26, -173.5, 27.2, -150.7, 38.6, -167.2, 51, -169.3, 51, -196.2, 77.9, -212, 70, -219.1, 70, -222.1, 72, -224.5, 72, -231.5, 82, -233.8, 82, -231.8, 96.3, -247.2, 92, -248.9, 92, -256.9, 95, -259.4, 95, -264.4, 101, -264.5, 126.4, -238.5, 163, -237.7, 163, -231, 176.4, -241, 212, -242.2, 212, -248.3, 254, -249.5, 254, -249.5, 289.2, -246.5, 304.4, -246.5, 309.4, -239.5, 326.3, -239.5, 329.8, -232.5, 336.8, -232.5, 338.2, -229, 340, -219.9, 340, -210, 334, -207.7, 334, -192.6, 320, -190.6, 320, -164.7, 291, -147.5, 324.5, -147.5, 325.1, -159.5, 340, -160.7, 340, -174.5, 365.5, -174.5, 372.6, -171.5, 377.5, -171.5, 379.9, -161.5, 388.8, -161.5, 390.3, -141, 400, -94.6, 400, -83, 393, -80.6, 393, -70.6, 382, -68.9, 382, -67, 374, -64.8, 374, -69.5, 358, -69.5, 354.4, -74.8, 346.9, -56.5, 351.5, -56.5, 352.8, -26.5, 356.7, -26.5, 358, 24.5, 359, 25.6, 359, 54.8, 355, 56.4, 355, 95.5, 364.5, 95.5, 365.8, 133.5, 370.7, 133.5, 372, 172.9, 372, 191.8, 364, 194.5, 364, 199.5, 357, 201.9, 357, 200.5, 348.7, 200.5, 345.3, 195.5, 339.3, 195.5, 337.1, 175.5, 319.1, 175.5, 317.8, 158.2, 309.1, 170.4, 296, 171.6, 296, 181.6, 280, 182.9, 280, 193.2, 252.7, 205.5, 271.6, 205.5, 274.1, 211.5, 278.1, 211.5, 280.8, 219.8, 278, 222.6, 278, 233.5, 262, 235, 262, 243.5, 229.3, 243.5, 197.8, 233.5, 146.6, 233.5, 142.6, 209.8, 85, 209.5, 71.7, 204.5, 56.7, 204.5, 53.4, 191.5, 35.3, 191.5, 33, 178, 22.4, 198.2, 6, 200.4, 6, 219.3, -14, 220.6, -14, 233.6, -33, 234.8, -33, 255.8, -79, 257.1, -79, 264.5, -115.6, 264.5, -203.1, 250.5, -250.3, 250.5, -253.5, 240.5, -273.5, 240.5, -275.6, 228.5, -292.7, 228.5, -294.8, 186.5, -340.8, 186.5, -342.1, 148.5, -368.1, 148.5, -369.3, 117.5, -383.3, 117.5, -384.5, 84.5, -394.5, 84.5, -395.7)
@@ -26,9 +29,19 @@ diffuse_texture = ExtResource("1_3vyb7")
 normal_texture = ExtResource("2_qhqgy")
 specular_texture = ExtResource("3_dqkch")
 
+[sub_resource type="Gradient" id="Gradient_fjrip"]
+offsets = PackedFloat32Array(0, 0.64539)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_smehm"]
+gradient = SubResource("Gradient_fjrip")
+fill = 1
+fill_from = Vector2(0.517073, 0.517073)
+
 [node name="Player" type="Node2D"]
 
 [node name="Playerbody" type="CharacterBody2D" parent="."]
+z_index = 2
 script = ExtResource("1_qlg0r")
 
 [node name="Torch" type="Sprite2D" parent="Playerbody"]
@@ -38,6 +51,7 @@ texture = ExtResource("4_dqkch")
 
 [node name="TorchLight" type="PointLight2D" parent="Playerbody/Torch"]
 position = Vector2(68, -58)
+shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_tuyoq")
 texture_scale = 33.69
@@ -54,12 +68,50 @@ texture = ExtResource("1_3vyb7")
 position_smoothing_enabled = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Playerbody"]
-position = Vector2(0, 1.19209e-07)
+position = Vector2(0, -1)
 scale = Vector2(0.0374527, 0.0374527)
 occluder = SubResource("OccluderPolygon2D_3vyb7")
+occluder_light_mask = 2
 
 [node name="shadows (incomplete)" type="Sprite2D" parent="Playerbody"]
 visible = false
 position = Vector2(215, -26)
 scale = Vector2(0.037, 0.037)
 texture = SubResource("CanvasTexture_3vyb7")
+
+[node name="RotationPoint" type="Node2D" parent="Playerbody"]
+
+[node name="Flashlight" type="Sprite2D" parent="Playerbody/RotationPoint"]
+visible = false
+position = Vector2(11, 1)
+rotation = 0.785398
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_dqkch")
+offset = Vector2(0.999123, -8.60355)
+
+[node name="FlashlightLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
+position = Vector2(-1.90735e-06, -7.62939e-06)
+rotation = -1.52335
+scale = Vector2(5, 5)
+energy = 1.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("6_fjrip")
+offset = Vector2(648.276, 517.244)
+texture_scale = 6.77
+
+[node name="PlayerLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
+position = Vector2(-120.208, 106.066)
+scale = Vector2(8, 8)
+energy = 0.4
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_smehm")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.227451, 0.227451, 0.227451, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+texture = ExtResource("7_smehm")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dopqpp7lgku4t"]
+
+[ext_resource type="Script" uid="uid://drqk7sfo0s85l" path="res://scripts/house.gd" id="1_qtlar"]
+[ext_resource type="Texture2D" uid="uid://5r04j0hcm77f" path="res://sprites/basic_house.png" id="2_rk7hg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_se78b"]
+size = Vector2(140, 231.5)
+
+[sub_resource type="Gradient" id="Gradient_qtlar"]
+offsets = PackedFloat32Array(0, 0.751773)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rk7hg"]
+gradient = SubResource("Gradient_qtlar")
+fill = 1
+fill_from = Vector2(0.512195, 0.526829)
+
+[node name="House" type="Node2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_qtlar")
+
+[node name="HouseSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_rk7hg")
+
+[node name="Door" type="Area2D" parent="."]
+
+[node name="DoorShape" type="CollisionShape2D" parent="Door"]
+position = Vector2(90, 204.25)
+shape = SubResource("RectangleShape2D_se78b")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -210.0
+offset_top = -207.5
+offset_right = 249.0
+offset_bottom = 5.5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "The wind is picking up, Interact to pick up flashlight for when your torch goes out."
+autowrap_mode = 3
+
+[node name="DoorLight" type="PointLight2D" parent="."]
+position = Vector2(90, 155)
+scale = Vector2(6, 6)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_rk7hg")
+
+[node name="WindowLight" type="PointLight2D" parent="."]
+position = Vector2(-80, -10)
+scale = Vector2(6, 6)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_rk7hg")
+
+[connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]
+[connection signal="body_exited" from="Door" to="." method="_on_door_body_exited"]

@@ -3,6 +3,10 @@ extends CharacterBody2D
 @onready var sprite_2d = $Sprite2D
 @onready var torch = $Torch
 @onready var torch_light = $Torch/TorchLight
+@onready var flashlight = $RotationPoint/Flashlight
+@onready var flashlight_light = $RotationPoint/Flashlight/FlashlightLight
+@onready var rotation_point = $RotationPoint
+
 
 
 
@@ -14,6 +18,7 @@ var time_since_on_floor = 0.0
 
 
 func _physics_process(delta):
+	var mouse_position = get_global_mouse_position()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -50,8 +55,16 @@ func _physics_process(delta):
 		velocity.x = 0
 
 	move_and_slide()
+	
+	#flashlight rotation
+	rotation_point.look_at(mouse_position)
 
 
 func _on_eternal_torch():
-	torch_light.energy = 2.5
+	torch_light.energy = 2
 	torch_light.texture_scale *= 3
+
+
+func _on_house_entered():
+	flashlight.show()
+	torch.hide()

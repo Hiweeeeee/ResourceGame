@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cs2q5xkhilp3j"]
+[gd_scene load_steps=12 format=3 uid="uid://cs2q5xkhilp3j"]
 
 [ext_resource type="Texture2D" uid="uid://c5u21oad2oqs0" path="res://sprites/backgrounds/mountain background.jpg" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://d1lmw3ugkdl30" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://buchyl7yj5mnf" path="res://scenes/test_stage.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dopqpp7lgku4t" path="res://scenes/house.tscn" id="3_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://fbocwujp04na" path="res://scenes/stick.tscn" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scripts/game_manager.gd" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://ddafftncvtags" path="res://scenes/campfire.tscn" id="4_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cynivb4sc68up" path="res://scenes/hud.tscn" id="5_iywne"]
 [ext_resource type="Script" uid="uid://xbs5cqa4ibw7" path="res://scripts/killbox.gd" id="8_gee14"]
+[ext_resource type="Script" uid="uid://bsflkausro7py" path="res://scripts/hud.gd" id="9_vtaks"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
 
@@ -31,18 +33,24 @@ unique_name_in_owner = true
 position = Vector2(206, 66)
 script = ExtResource("4_iywne")
 
+[node name="House" parent="." instance=ExtResource("3_0tnpc")]
+position = Vector2(-1543, 783)
+
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(1693, -425)
+position = Vector2(1832, -384)
 
 [node name="TestStage" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(576, 628)
+
+[node name="TestStage11" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-1112, 929)
 
 [node name="TestStage2" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(419, 393)
 scale = Vector2(0.1, 0.1)
 
 [node name="TestStage3" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(637, 453)
+position = Vector2(622, 500)
 scale = Vector2(0.1, 0.1)
 
 [node name="TestStage4" parent="." instance=ExtResource("2_yqjtg")]
@@ -51,8 +59,8 @@ rotation = -0.598648
 scale = Vector2(0.3, 0.1)
 
 [node name="TestStage5" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(1005.2, 58.1)
-scale = Vector2(0.25, 0.1)
+position = Vector2(1005.2, 59.86)
+scale = Vector2(0.25, 0.2)
 
 [node name="TestStage10" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(1324, 676)
@@ -113,6 +121,7 @@ color = Color(0.00566115, 0.00566115, 0.00566115, 1)
 [node name="HUD" parent="." instance=ExtResource("5_iywne")]
 offset = Vector2(500, 700)
 transform = Transform2D(1, 0, 0, 1, 500, 700)
+script = ExtResource("9_vtaks")
 
 [node name="StickLabel" type="Label" parent="HUD"]
 anchors_preset = -1
@@ -120,11 +129,40 @@ anchor_left = -0.142
 anchor_top = -0.205
 anchor_right = -0.142
 anchor_bottom = -0.205
-offset_left = -332.416
-offset_top = -562.16
-offset_right = -177.416
-offset_bottom = -503.16
+offset_left = -336.416
+offset_top = -567.16
+offset_right = -181.416
+offset_bottom = -508.16
+theme_override_font_sizes/font_size = 25
 text = "Sticks: 0"
+
+[node name="QuitButton" type="Button" parent="HUD"]
+visible = false
+offset_left = -500.0
+offset_top = -700.0
+offset_right = -408.0
+offset_bottom = -637.0
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="ExplainMenu" type="Label" parent="HUD"]
+offset_left = 348.0
+offset_top = -700.0
+offset_right = 651.0
+offset_bottom = -587.0
+theme_override_font_sizes/font_size = 40
+text = "press 'esc' to open the menu"
+autowrap_mode = 3
+
+[node name="ExplainFullScreen" type="Label" parent="HUD"]
+visible = false
+offset_left = 458.0
+offset_top = -700.0
+offset_right = 651.0
+offset_bottom = -529.0
+theme_override_font_sizes/font_size = 40
+text = "press 'P' to toggle fullscreen"
+autowrap_mode = 3
 
 [node name="killbox" type="Area2D" parent="."]
 script = ExtResource("8_gee14")
@@ -133,4 +171,5 @@ script = ExtResource("8_gee14")
 position = Vector2(-7, 3024)
 shape = SubResource("WorldBoundaryShape2D_u5sy4")
 
+[connection signal="pressed" from="HUD/QuitButton" to="GameManager" method="_on_quit_button_pressed"]
 [connection signal="body_entered" from="killbox" to="killbox" method="_on_body_entered"]
