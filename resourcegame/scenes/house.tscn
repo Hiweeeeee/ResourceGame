@@ -26,7 +26,6 @@ texture = ExtResource("2_rk7hg")
 
 [node name="DoorShape" type="CollisionShape2D" parent="Door"]
 position = Vector2(90, 199.25)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_se78b")
 
 [node name="Label" type="Label" parent="."]

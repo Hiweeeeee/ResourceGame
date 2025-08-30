@@ -70,7 +70,6 @@ func _physics_process(delta):
 				elif normal.x < -0.5:
 					velocity.y = WALL_JUMP_VELOCITY
 					current_speed = WALL_JUMP_VELOCITY
-					print("is this happeing?")
 			
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -99,6 +98,10 @@ func _physics_process(delta):
 	#flashlight rotation
 	rotation_point.look_at(mouse_position)
 	
+	if Input.is_action_just_pressed("click") and flashlight_light.visible:
+		flashlight_light.hide()
+	elif Input.is_action_just_pressed("click"):
+		flashlight_light.show()
 
 func _on_eternal_torch():
 	torch_light.energy = 2

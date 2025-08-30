@@ -86,9 +86,8 @@ texture = SubResource("CanvasTexture_3vyb7")
 [node name="RotationPoint" type="Node2D" parent="Playerbody"]
 
 [node name="Flashlight" type="Sprite2D" parent="Playerbody/RotationPoint"]
-visible = false
 position = Vector2(9, 2)
-rotation = 0.785398
+rotation = 0.884188
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("6_smehm")
 offset = Vector2(0.999123, -8.60355)
@@ -103,8 +102,8 @@ shadow_filter_smooth = 3.0
 texture = SubResource("GradientTexture2D_smehm")
 
 [node name="FlashlightLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
-position = Vector2(-1.52588e-05, -70.7106)
-rotation = -1.52335
+position = Vector2(-45.6441, -102.062)
+rotation = -1.6616
 scale = Vector2(12.5, 12.5)
 energy = 1.5
 shadow_enabled = true

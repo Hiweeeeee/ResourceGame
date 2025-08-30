@@ -23,7 +23,7 @@ float randomNonInout(uint state){
 void start() {
 	uint state = RANDOM_SEED + NUMBER * uint(343);
 	mat4 justScale = mat4(EMISSION_TRANSFORM[0], EMISSION_TRANSFORM[1], EMISSION_TRANSFORM[2], vec4(0.0, 0.0, 0.0, 1.0));
-	TRANSFORM = EMISSION_TRANSFORM * mat4(2);
+	TRANSFORM = mat4(2);
 	vec4 pos = vec4(random(state)*width-width/2.0, random(state)*height-height/2.0, 0.0, 1.0) * justScale;
 	pos.xy += EMISSION_TRANSFORM[3].xy;
 	TRANSFORM[3] = pos;

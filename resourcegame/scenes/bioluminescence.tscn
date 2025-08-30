@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cbdf2fjhohfvl"]
 
-[ext_resource type="Shader" uid="uid://nvig1cqbwtu7" path="res://scenes/bioluminescence.gdshader" id="1_4mqaq"]
+[ext_resource type="Shader" uid="uid://nvig1cqbwtu7" path="res://shaders/bioluminescence.gdshader" id="1_4mqaq"]
 [ext_resource type="Texture2D" uid="uid://du0njt66xbr1v" path="res://sprites/light/NaD6F.png" id="2_ea81j"]
-[ext_resource type="Script" uid="uid://bq1jhaty841eh" path="res://scenes/sprite_2d.gd" id="3_lqvvu"]
+[ext_resource type="Script" uid="uid://bq1jhaty841eh" path="res://scripts/sprite_2d.gd" id="3_lqvvu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ea81j"]
 shader = ExtResource("1_4mqaq")
