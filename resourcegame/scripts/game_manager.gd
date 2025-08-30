@@ -11,6 +11,7 @@ var sticks = 0:
 @onready var player = $"../Player/Playerbody"
 @onready var house = $"../House"
 @onready var hud = $"../HUD"
+@onready var tilemaps = $"../Tilemaps"
 
 var shader : ShaderMaterial
 
@@ -20,6 +21,8 @@ func _ready():
 	campfire.eternal_torch.connect(player._on_eternal_torch)
 	house.house_entered.connect(player._on_house_entered)
 	campfire.eternal_torch.connect(hud._on_eternal_torch)
+	player.Redlight.connect(tilemaps._on_red_light)
+	player.Greenlight.connect(tilemaps._on_green_light)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

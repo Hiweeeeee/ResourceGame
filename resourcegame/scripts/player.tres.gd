@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
+signal Redlight
+signal Greenlight
+
 @onready var sprite_2d = $Sprite2D
 @onready var torch = $Torch
 @onready var torch_light = $Torch/TorchLight
 @onready var flashlight = $RotationPoint/Flashlight
 @onready var flashlight_light = $RotationPoint/Flashlight/FlashlightLight
 @onready var rotation_point = $RotationPoint
+@onready var red_light = $RotationPoint/Flashlight/RedLight
+@onready var green_light = $RotationPoint/Flashlight/GreenLight
 
 
 const SPEED = 300.0
@@ -95,13 +100,31 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	#flashlight rotation
-	rotation_point.look_at(mouse_position)
-	
-	if Input.is_action_just_pressed("click") and flashlight_light.visible:
-		flashlight_light.hide()
-	elif Input.is_action_just_pressed("click"):
-		flashlight_light.show()
+	if flashlight.visible == true:
+		#flashlight rotation
+		rotation_point.look_at(mouse_position)
+		
+		if Input.is_action_just_pressed("left_click") and (flashlight_light.visible or green_light.visible):
+			flashlight_light.hide()
+			green_light.hide()
+			red_light.show()
+			Redlight.emit()
+		elif Input.is_action_just_pressed("left_click"):
+			flashlight_light.show()
+			red_light.hide()
+			green_light.hide()
+			Redlight.emit()
+			
+		if Input.is_action_just_pressed("right_click") and (flashlight_light.visible or red_light.visible):
+			flashlight_light.hide()
+			green_light.show()
+			red_light.hide()
+			Greenlight.emit()
+		elif Input.is_action_just_pressed("right_click"):
+			flashlight_light.show()
+			red_light.hide()
+			green_light.hide()
+			Greenlight.emit()
 
 func _on_eternal_torch():
 	torch_light.energy = 2

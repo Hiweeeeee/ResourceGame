@@ -86,6 +86,7 @@ texture = SubResource("CanvasTexture_3vyb7")
 [node name="RotationPoint" type="Node2D" parent="Playerbody"]
 
 [node name="Flashlight" type="Sprite2D" parent="Playerbody/RotationPoint"]
+visible = false
 position = Vector2(9, 2)
 rotation = 0.884188
 scale = Vector2(0.04, 0.04)
@@ -102,10 +103,39 @@ shadow_filter_smooth = 3.0
 texture = SubResource("GradientTexture2D_smehm")
 
 [node name="FlashlightLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
+position = Vector2(-45.6441, -102.062)
+rotation = -1.6616
+scale = Vector2(12.5, 12.5)
+energy = 1.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 3.0
+texture = ExtResource("6_fjrip")
+offset = Vector2(648.276, 517.244)
+texture_scale = 6.77
+
+[node name="RedLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
 visible = false
 position = Vector2(-45.6441, -102.062)
 rotation = -1.6616
 scale = Vector2(12.5, 12.5)
+color = Color(0.701961, 0, 0, 1)
+energy = 1.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 3.0
+texture = ExtResource("6_fjrip")
+offset = Vector2(648.276, 517.244)
+texture_scale = 6.77
+
+[node name="GreenLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
+visible = false
+position = Vector2(-45.6441, -102.062)
+rotation = -1.6616
+scale = Vector2(12.5, 12.5)
+color = Color(0, 0.643698, 0, 1)
 energy = 1.5
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
