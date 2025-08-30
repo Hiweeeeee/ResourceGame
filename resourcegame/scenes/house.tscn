@@ -43,6 +43,8 @@ position = Vector2(90, 155)
 scale = Vector2(6, 6)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 2.0
 texture = SubResource("GradientTexture2D_rk7hg")
 
 [node name="WindowLight" type="PointLight2D" parent="."]
@@ -50,6 +52,8 @@ position = Vector2(-80, -10)
 scale = Vector2(6, 6)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 2.0
 texture = SubResource("GradientTexture2D_rk7hg")
 
 [connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]
