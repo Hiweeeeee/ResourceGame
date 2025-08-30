@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cwccrxm5foigq" path="res://sprites/player/393-Piplup_normal.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bgn5shvdu8sov" path="res://sprites/player/specular_piplup.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bu1l2xvcvn1tq" path="res://sprites/Stick_JE1_BE1.png" id="4_dqkch"]
-[ext_resource type="Texture2D" uid="uid://ebx8f8ww12jy" path="res://sprites/light/flashlight cone.png" id="6_fjrip"]
+[ext_resource type="Texture2D" uid="uid://ebx8f8ww12jy" path="res://sprites/flashlight/flashlight cone.png" id="6_fjrip"]
 [ext_resource type="Texture2D" uid="uid://c5u21oad2oqs0" path="res://sprites/backgrounds/mountain background.jpg" id="7_smehm"]
 
 [sub_resource type="Gradient" id="Gradient_dqkch"]
