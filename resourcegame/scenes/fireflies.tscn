@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://daxfd6hl3rbm4"]
+
+[sub_resource type="Gradient" id="Gradient_bpmr0"]
+offsets = PackedFloat32Array(0, 0.127273, 0.872727, 1)
+colors = PackedColorArray(0.729412, 1, 0, 0, 0.729412, 1, 0, 1, 0.729412, 1, 0, 1, 0.729412, 1, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6uc51"]
+gradient = SubResource("Gradient_bpmr0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1dv2x"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30, 30, 1)
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_6uc51")
+
+[node name="Fireflies" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+lifetime = 6.0
+explosiveness = 0.4
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1dv2x")
