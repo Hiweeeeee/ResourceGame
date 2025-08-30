@@ -18,7 +18,9 @@ polygon = PackedVector2Array(-31.9999, -13.1765, -31.9999, 13.1765, 31.9999, 13.
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
 shape = SubResource("RectangleShape2D_ueehy")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
 modulate = Color(0, 0, 1, 1)

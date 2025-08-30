@@ -43,7 +43,6 @@ fill_from = Vector2(0.517073, 0.517073)
 
 [node name="Playerbody" type="CharacterBody2D" parent="."]
 z_index = 2
-floor_constant_speed = true
 floor_snap_length = 6.2
 script = ExtResource("1_qlg0r")
 
@@ -56,6 +55,8 @@ texture = ExtResource("4_dqkch")
 position = Vector2(68, -58)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 3.0
 texture = SubResource("GradientTexture2D_tuyoq")
 texture_scale = 33.69
 
@@ -85,6 +86,7 @@ texture = SubResource("CanvasTexture_3vyb7")
 [node name="RotationPoint" type="Node2D" parent="Playerbody"]
 
 [node name="Flashlight" type="Sprite2D" parent="Playerbody/RotationPoint"]
+visible = false
 position = Vector2(9, 2)
 rotation = 0.785398
 scale = Vector2(0.04, 0.04)
@@ -96,6 +98,8 @@ position = Vector2(-194.454, 123.744)
 scale = Vector2(20, 20)
 energy = 0.4
 shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.0
 texture = SubResource("GradientTexture2D_smehm")
 
 [node name="FlashlightLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
@@ -105,6 +109,8 @@ scale = Vector2(12.5, 12.5)
 energy = 1.5
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 3.0
 texture = ExtResource("6_fjrip")
 offset = Vector2(648.276, 517.244)
 texture_scale = 6.77
