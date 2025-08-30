@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cs2q5xkhilp3j"]
+[gd_scene load_steps=15 format=3 uid="uid://c8sr06byqn2kq"]
 
 [ext_resource type="Texture2D" uid="uid://c5u21oad2oqs0" path="res://sprites/backgrounds/mountain background.jpg" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://d1lmw3ugkdl30" path="res://scenes/player.tscn" id="1_uwrxv"]

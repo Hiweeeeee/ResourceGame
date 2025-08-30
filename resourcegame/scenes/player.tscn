@@ -85,6 +85,7 @@ texture = SubResource("CanvasTexture_3vyb7")
 [node name="RotationPoint" type="Node2D" parent="Playerbody"]
 
 [node name="Flashlight" type="Sprite2D" parent="Playerbody/RotationPoint"]
+visible = false
 position = Vector2(9, 2)
 rotation = 0.785398
 scale = Vector2(0.04, 0.04)
