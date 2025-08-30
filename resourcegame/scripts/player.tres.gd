@@ -8,8 +8,6 @@ extends CharacterBody2D
 @onready var rotation_point = $RotationPoint
 
 
-
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 const COYOTE_TIME = 0.1
@@ -58,7 +56,7 @@ func _physics_process(delta):
 	
 	#flashlight rotation
 	rotation_point.look_at(mouse_position)
-
+	
 
 func _on_eternal_torch():
 	torch_light.energy = 2
