@@ -11,8 +11,6 @@
 [ext_resource type="Script" uid="uid://xbs5cqa4ibw7" path="res://scripts/killbox.gd" id="8_gee14"]
 [ext_resource type="Script" uid="uid://bsflkausro7py" path="res://scripts/hud.gd" id="9_vtaks"]
 [ext_resource type="Texture2D" uid="uid://beg643v5cehet" path="res://sprites/Tilesets/Mountain.png" id="11_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://daxfd6hl3rbm4" path="res://scenes/fireflies.tscn" id="12_dinhu"]
-[ext_resource type="PackedScene" uid="uid://cbdf2fjhohfvl" path="res://scenes/bioluminescence.tscn" id="13_kvuet"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
 
@@ -89,7 +87,7 @@ polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 polygon = PackedVector2Array(-4, 4, -4, -2.53814, 2.1828, -2.63966, 2.28432, 4)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gxtfn"]
-polygon = PackedVector2Array(-0.761441, -4, 4, -4, 4, 4, -0.659916, 4)
+polygon = PackedVector2Array(-1.97975, -4, 1.87822, -4, 1.67517, 4, -2.08127, 4)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nepv3"]
 polygon = PackedVector2Array(-4, -4, 1.87822, -4, 1.7767, 1.92899, -4, 1.62441)
@@ -432,11 +430,10 @@ scale = Vector2(5.28556, 5.3925)
 texture = ExtResource("1_u5sy4")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 position = Vector2(1942, -370)
 scale = Vector2(0.5, 0.5)
 editor_only = true
-max_distance = 0.0
+max_distance = 10.0
 
 [node name="GameManager" type="Node2D" parent="."]
 unique_name_in_owner = true

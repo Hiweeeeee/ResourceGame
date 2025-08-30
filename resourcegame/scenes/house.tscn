@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://5r04j0hcm77f" path="res://sprites/basic_house.png" id="2_rk7hg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se78b"]
-size = Vector2(140, 231.5)
+size = Vector2(140, 221.5)
 
 [sub_resource type="Gradient" id="Gradient_qtlar"]
 offsets = PackedFloat32Array(0, 0.751773)
@@ -25,7 +25,8 @@ texture = ExtResource("2_rk7hg")
 [node name="Door" type="Area2D" parent="."]
 
 [node name="DoorShape" type="CollisionShape2D" parent="Door"]
-position = Vector2(90, 204.25)
+position = Vector2(90, 199.25)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_se78b")
 
 [node name="Label" type="Label" parent="."]
