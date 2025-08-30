@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1lmw3ugkdl30"]
+[gd_scene load_steps=16 format=3 uid="uid://d1lmw3ugkdl30"]
 
 [ext_resource type="Texture2D" uid="uid://cqckglq2vsbja" path="res://sprites/player/393-Piplup.webp" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bj2wpbd2a01xe" path="res://scripts/player.tres.gd" id="1_qlg0r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bgn5shvdu8sov" path="res://sprites/player/specular_piplup.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bu1l2xvcvn1tq" path="res://sprites/Stick_JE1_BE1.png" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://ebx8f8ww12jy" path="res://sprites/flashlight/flashlight cone.png" id="6_fjrip"]
+[ext_resource type="Texture2D" uid="uid://bcwtposb4u6sh" path="res://sprites/flashlight/flashlight.png" id="6_smehm"]
 [ext_resource type="Texture2D" uid="uid://c5u21oad2oqs0" path="res://sprites/backgrounds/mountain background.jpg" id="7_smehm"]
 
 [sub_resource type="Gradient" id="Gradient_dqkch"]
@@ -42,6 +43,8 @@ fill_from = Vector2(0.517073, 0.517073)
 
 [node name="Playerbody" type="CharacterBody2D" parent="."]
 z_index = 2
+floor_constant_speed = true
+floor_snap_length = 6.2
 script = ExtResource("1_qlg0r")
 
 [node name="Torch" type="Sprite2D" parent="Playerbody"]
@@ -82,30 +85,29 @@ texture = SubResource("CanvasTexture_3vyb7")
 [node name="RotationPoint" type="Node2D" parent="Playerbody"]
 
 [node name="Flashlight" type="Sprite2D" parent="Playerbody/RotationPoint"]
-visible = false
-position = Vector2(11, 1)
+position = Vector2(9, 2)
 rotation = 0.785398
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_dqkch")
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("6_smehm")
 offset = Vector2(0.999123, -8.60355)
 
+[node name="PlayerLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
+position = Vector2(-194.454, 123.744)
+scale = Vector2(20, 20)
+energy = 0.4
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_smehm")
+
 [node name="FlashlightLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
-position = Vector2(-1.90735e-06, -7.62939e-06)
+position = Vector2(-1.52588e-05, -70.7106)
 rotation = -1.52335
-scale = Vector2(5, 5)
+scale = Vector2(12.5, 12.5)
 energy = 1.5
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = ExtResource("6_fjrip")
 offset = Vector2(648.276, 517.244)
 texture_scale = 6.77
-
-[node name="PlayerLight" type="PointLight2D" parent="Playerbody/RotationPoint/Flashlight"]
-position = Vector2(-120.208, 106.066)
-scale = Vector2(8, 8)
-energy = 0.4
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_smehm")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
