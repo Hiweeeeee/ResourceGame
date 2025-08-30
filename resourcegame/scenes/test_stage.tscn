@@ -4,9 +4,11 @@
 size = Vector2(1151, 35)
 
 [sub_resource type="Gradient" id="Gradient_ueehy"]
+offsets = PackedFloat32Array(0, 0.0070922)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jog5b"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xgmjd"]
 gradient = SubResource("Gradient_ueehy")
+fill_to = Vector2(0.0146341, 0.0146341)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ueehy"]
 polygon = PackedVector2Array(-31.9999, -13.1765, -31.9999, 13.1765, 31.9999, 13.1765, 31.9999, -13.1765)
@@ -19,9 +21,11 @@ polygon = PackedVector2Array(-31.9999, -13.1765, -31.9999, 13.1765, 31.9999, 13.
 shape = SubResource("RectangleShape2D_ueehy")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+modulate = Color(0, 0, 1, 1)
+self_modulate = Color(0, 0, 1, 1)
 position = Vector2(9.53674e-07, 0)
-scale = Vector2(17.9688, 0.53125)
-texture = SubResource("GradientTexture2D_jog5b")
+scale = Vector2(17.969, 0.7)
+texture = SubResource("GradientTexture2D_xgmjd")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D/CollisionShape2D"]
 position = Vector2(1.13687e-13, 0)
