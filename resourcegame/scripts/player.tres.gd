@@ -28,6 +28,12 @@ func _physics_process(delta):
 	var mouse_position = get_global_mouse_position()
 	# Add the gravity.
 	
+	if not is_on_floor():
+		#Track time since last on floor
+		if time_since_on_floor >= COYOTE_TIME:
+			was_on_floor = false
+		else:
+			time_since_on_floor += delta
 	
 	if not is_on_floor() and not is_on_wall():
 		velocity += get_gravity() * delta
@@ -43,12 +49,13 @@ func _physics_process(delta):
 		time_since_on_floor = 0.0
 		
 	elif is_on_wall():
-		if wall_grab == false:
+		if wall_grab == false and velocity.y > 0:
 			wall_grab = true
 			velocity.y = 0
-		velocity += (get_gravity() * delta)/4
-		
-
+		elif velocity.y > 0:
+			velocity += (get_gravity() * delta)/4
+		else:
+			velocity += get_gravity() * delta
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and ((is_on_floor() or was_on_floor) or (is_on_wall() or wall_grab)):
 		if (is_on_floor() or was_on_floor):
@@ -65,6 +72,7 @@ func _physics_process(delta):
 				elif normal.x < -0.5:
 					velocity.y = WALL_JUMP_VELOCITY
 					current_speed = WALL_JUMP_VELOCITY
+					print("is this happeing?")
 			
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
