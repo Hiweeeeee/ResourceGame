@@ -37,7 +37,7 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v3s22"]
 shader = ExtResource("1_837t3")
 shader_parameter/playerPosition = Vector2(0, 0)
-shader_parameter/spawnSize = Vector2(180, 90)
+shader_parameter/spawnSize = Vector2(180, 75)
 shader_parameter/minSpeed = 6.0
 shader_parameter/maxSpeed = 15.0
 shader_parameter/fleeMaxSpeed = 30.0
@@ -55,9 +55,10 @@ process_material = SubResource("ParticleProcessMaterial_1dv2x")
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
 light_mask = 512
 visibility_layer = 512
-amount = 10
+amount = 6
 texture = SubResource("GradientTexture2D_4t2dn")
 lifetime = 6.0
+preprocess = 2.0
 explosiveness = 0.4
 randomness = 1.0
 collision_base_size = 0.1

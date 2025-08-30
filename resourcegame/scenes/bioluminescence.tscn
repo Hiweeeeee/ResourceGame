@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbdf2fjhohfvl"]
+
+[ext_resource type="Shader" uid="uid://nvig1cqbwtu7" path="res://scenes/bioluminescence.gdshader" id="1_4mqaq"]
+[ext_resource type="Texture2D" uid="uid://du0njt66xbr1v" path="res://sprites/light/NaD6F.png" id="2_ea81j"]
+[ext_resource type="Script" uid="uid://bq1jhaty841eh" path="res://scenes/sprite_2d.gd" id="3_lqvvu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ea81j"]
+shader = ExtResource("1_4mqaq")
+shader_parameter/width = 100.0
+shader_parameter/height = 100.0
+
+[sub_resource type="Gradient" id="Gradient_ea81j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lqvvu"]
+gradient = SubResource("Gradient_ea81j")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqvvu"]
+
+[node name="Bioluminescence" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 512
+visibility_layer = 512
+range_item_cull_mask = 512
+texture = ExtResource("2_ea81j")
+texture_scale = 24.33
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+light_mask = 512
+visibility_layer = 512
+amount = 1000
+lifetime = 3.0
+fixed_fps = 60
+collision_base_size = 20.0
+process_material = SubResource("ShaderMaterial_ea81j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(100, 100)
+texture = SubResource("GradientTexture1D_lqvvu")
+script = ExtResource("3_lqvvu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(7, 7)
+shape = SubResource("RectangleShape2D_lqvvu")

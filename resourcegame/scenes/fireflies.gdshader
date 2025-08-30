@@ -10,6 +10,7 @@ uniform float minSpeed;
 uniform float maxSpeed;
 uniform float fleeMaxSpeed;
 uniform float lifetimeVariability;
+uniform sampler2D glowCurve;
 
 float random(inout uint state){
   state = state * uint(747796405) + uint(2891336453);
@@ -42,6 +43,7 @@ void start() {
 }
 
 void process() {
+	
 	// Called every frame on existing particles (according to the Fixed FPS property).
 	VELOCITY = vec3(CUSTOM.zw, 0.0);
 	CUSTOM.z += randomNonInout(RANDOM_SEED + NUMBER + uint(TIME * 100.0)) * maxAngleChange - maxAngleChange/2.0;

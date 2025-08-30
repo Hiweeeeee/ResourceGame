@@ -9,11 +9,8 @@ var sticks = 0:
 @onready var campfire = $"../Campfire"
 #@onready var playerbody = $Playerbody
 @onready var player = $"../Player/Playerbody"
-@onready var playerNode = $"../Player"
 @onready var house = $"../House"
 @onready var hud = $"../HUD"
-@onready var fireflies = $"../Fireflies/GPUParticles2D2"
-@onready var firefliesNode: Node2D = $"../Fireflies"
 
 var shader : ShaderMaterial
 
@@ -23,7 +20,6 @@ func _ready():
 	campfire.eternal_torch.connect(player._on_eternal_torch)
 	house.house_entered.connect(player._on_house_entered)
 	campfire.eternal_torch.connect(hud._on_eternal_torch)
-	shader = fireflies.process_material
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,11 +28,6 @@ func _process(delta):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	elif Input.is_action_just_pressed("full_screen"):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	
-	
-	#shader.set_shader_parameter("playerPosition", [player.position.x + playerNode.position.x - firefliesNode.position.x, player.position.y + playerNode.position.y - firefliesNode.position.y])
-	shader.set_shader_parameter("playerPosition", [player.position.x + playerNode.position.x, player.position.y + playerNode.position.y])
-	print()
 
 func pick_up_stick():
 	sticks += 1
