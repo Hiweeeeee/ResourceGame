@@ -12,6 +12,8 @@ var sticks = 0:
 @onready var house = $"../House"
 @onready var hud = $"../HUD"
 
+var shader : ShaderMaterial
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await get_tree().process_frame

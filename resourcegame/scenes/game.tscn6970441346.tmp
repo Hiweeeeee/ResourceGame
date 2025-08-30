@@ -1,0 +1,290 @@
+[gd_scene load_steps=16 format=3 uid="uid://c8sr06byqn2kq"]
+
+[ext_resource type="Texture2D" uid="uid://c5u21oad2oqs0" path="res://sprites/backgrounds/mountain background.jpg" id="1_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://d1lmw3ugkdl30" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://buchyl7yj5mnf" path="res://scenes/test_stage.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dopqpp7lgku4t" path="res://scenes/house.tscn" id="3_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://fbocwujp04na" path="res://scenes/stick.tscn" id="3_lbhrr"]
+[ext_resource type="Script" uid="uid://u4tao4ws6wib" path="res://scripts/game_manager.gd" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://ddafftncvtags" path="res://scenes/campfire.tscn" id="4_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cynivb4sc68up" path="res://scenes/hud.tscn" id="5_iywne"]
+[ext_resource type="Script" uid="uid://xbs5cqa4ibw7" path="res://scripts/killbox.gd" id="8_gee14"]
+[ext_resource type="Script" uid="uid://bsflkausro7py" path="res://scripts/hud.gd" id="9_vtaks"]
+[ext_resource type="Texture2D" uid="uid://beg643v5cehet" path="res://sprites/Tilesets/Mountain.png" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://daxfd6hl3rbm4" path="res://scenes/fireflies.tscn" id="12_dinhu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dinhu"]
+texture = ExtResource("11_kvpfn")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+7:4/0 = 0
+6:4/0 = 0
+4:4/0 = 0
+3:4/0 = 0
+2:4/0 = 0
+1:4/0 = 0
+0:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+7:6/0 = 0
+6:6/0 = 0
+5:6/0 = 0
+4:6/0 = 0
+3:6/0 = 0
+2:6/0 = 0
+1:6/0 = 0
+0:6/0 = 0
+8:6/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+10:6/0 = 0
+9:6/0 = 0
+9:0/0 = 0
+9:1/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+10:1/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+16:1/0 = 0
+15:1/0 = 0
+14:1/0 = 0
+13:1/0 = 0
+12:1/0 = 0
+12:0/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+16:3/0 = 0
+15:3/0 = 0
+14:3/0 = 0
+13:3/0 = 0
+12:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kvuet"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_dinhu")
+
+[node name="Game" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -5
+texture_filter = 1
+position = Vector2(-1109, -186)
+scale = Vector2(5.28556, 5.3925)
+texture = ExtResource("1_u5sy4")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(1942, -370)
+scale = Vector2(0.5, 0.5)
+editor_only = true
+max_distance = 10.0
+
+[node name="GameManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(206, 66)
+script = ExtResource("4_iywne")
+
+[node name="House" parent="." instance=ExtResource("3_0tnpc")]
+position = Vector2(-1543, 783)
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(1832, -384)
+
+[node name="TestStage" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(576, 628)
+
+[node name="TestStage11" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-1112, 929)
+
+[node name="TestStage2" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(419, 393)
+scale = Vector2(0.1, 0.1)
+
+[node name="TestStage3" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(622, 500)
+scale = Vector2(0.1, 0.1)
+
+[node name="TestStage4" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(719.69, 155.1)
+rotation = -0.598648
+scale = Vector2(0.3, 0.1)
+
+[node name="TestStage5" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1005.2, 59.86)
+scale = Vector2(0.25, 0.2)
+
+[node name="TestStage10" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1324, 676)
+scale = Vector2(0.25, 0.04)
+
+[node name="TestStage6" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(214, 729)
+rotation = -0.00729023
+scale = Vector2(0.391714, 0.170908)
+
+[node name="TestStage7" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-154.3, 816.65)
+rotation = -0.549779
+scale = Vector2(0.292425, 0.0722181)
+
+[node name="TestStage8" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1236.6, -186.8)
+rotation = -0.719076
+scale = Vector2(0.4, 0.16)
+
+[node name="TestStage9" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(1695.7, -338.77)
+scale = Vector2(0.5, 0.1)
+
+[node name="Campfire" parent="." instance=ExtResource("4_p57ef")]
+position = Vector2(1430, -375)
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="Campfire"]
+offset_left = -336.0
+offset_top = -332.0
+offset_right = 356.0
+offset_bottom = -144.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
+text = "You have revived the eternal flame! Do you wish to take it with you (press F on fire)"
+horizontal_alignment = 1
+vertical_alignment = 3
+autowrap_mode = 3
+
+[node name="stick" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(1009, 591)
+
+[node name="stick2" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(379, 374)
+
+[node name="stick4" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(410, 703)
+
+[node name="stick3" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(1112, 31)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(1937, -362)
+scale = Vector2(0.5, 0.5)
+color = Color(0.00566115, 0.00566115, 0.00566115, 1)
+
+[node name="HUD" parent="." instance=ExtResource("5_iywne")]
+offset = Vector2(500, 700)
+transform = Transform2D(1, 0, 0, 1, 500, 700)
+script = ExtResource("9_vtaks")
+
+[node name="StickLabel" type="Label" parent="HUD"]
+anchors_preset = -1
+anchor_left = -0.142
+anchor_top = -0.205
+anchor_right = -0.142
+anchor_bottom = -0.205
+offset_left = -336.416
+offset_top = -567.16
+offset_right = -181.416
+offset_bottom = -508.16
+theme_override_font_sizes/font_size = 25
+text = "Sticks: 0"
+
+[node name="QuitButton" type="Button" parent="HUD"]
+visible = false
+offset_left = -500.0
+offset_top = -700.0
+offset_right = -408.0
+offset_bottom = -637.0
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="ExplainMenu" type="Label" parent="HUD"]
+offset_left = 348.0
+offset_top = -700.0
+offset_right = 651.0
+offset_bottom = -587.0
+theme_override_font_sizes/font_size = 40
+text = "press 'esc' to open the menu"
+autowrap_mode = 3
+
+[node name="ExplainFullScreen" type="Label" parent="HUD"]
+visible = false
+offset_left = 458.0
+offset_top = -700.0
+offset_right = 651.0
+offset_bottom = -529.0
+theme_override_font_sizes/font_size = 40
+text = "press 'P' to toggle fullscreen"
+autowrap_mode = 3
+
+[node name="killbox" type="Area2D" parent="."]
+script = ExtResource("8_gee14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killbox"]
+position = Vector2(-7, 3024)
+shape = SubResource("WorldBoundaryShape2D_u5sy4")
+
+[node name="TestStage12" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-2577, 1086)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_kvuet")
+format = 2
+layer_0/tile_data = PackedInt32Array(-2817872, 327680, 0, -2817871, 393216, 0, -2817870, 327680, 0, -2817869, 393216, 0, -2817868, 327680, 0, -2817867, 393216, 0, -2817866, 327680, 0, -2817865, 393216, 0, -2817862, 327680, 0, -2817861, 393216, 0, -2817864, 327680, 0, -2817863, 393216, 0, -2817858, 327680, 0, -2817857, 393216, 0, -2817856, 327680, 0, -2817855, 393216, 0, -2817854, 327680, 0, -2817853, 393216, 0, -2817852, 327680, 0, -2817851, 393216, 0, -2817850, 327680, 0, -2817849, 393216, 0, -2817848, 327680, 0, -2817847, 393216, 0, -2817846, 327680, 0, -2817845, 393216, 0, -2817844, 327680, 0, -2817843, 393216, 0, -2817842, 327680, 0, -2817841, 393216, 0, -2817840, 327680, 0, -2817839, 393216, 0, -2817838, 327680, 0, -2817837, 393216, 0, -2817836, 327680, 0, -2817835, 393216, 0, -2817834, 327680, 0, -2817833, 393216, 0, -2817832, 327680, 0, -2817831, 393216, 0, -2817830, 327680, 0, -2817829, 393216, 0, -2817828, 327680, 0, -2817827, 393216, 0, -2817826, 327680, 0, -2817825, 393216, 0, -2817824, 327680, 0, -2817823, 393216, 0, -2817822, 327680, 0, -2817821, 327680, 0, -2817820, 393216, 0, -2817819, 327680, 0, -2817818, 393216, 0, -2817817, 327680, 0, -2817816, 393216, 0, -2817805, 327680, 0, -2817804, 393216, 0, -2817807, 327680, 0, -2817806, 393216, 0, -2817809, 327680, 0, -2817808, 393216, 0, -2817811, 327680, 0, -2817810, 393216, 0, -2817813, 327680, 0, -2817812, 393216, 0, -2817815, 327680, 0, -2817814, 393216, 0, -2817803, 327680, 0, -2817802, 393216, 0, -2817801, 327680, 0, -2817860, 327680, 0, -2817859, 393216, 0)
+
+[node name="Fireflies" parent="." instance=ExtResource("12_dinhu")]
+position = Vector2(1700, -378)
+
+[connection signal="pressed" from="HUD/QuitButton" to="GameManager" method="_on_quit_button_pressed"]
+[connection signal="body_entered" from="killbox" to="killbox" method="_on_body_entered"]
